@@ -3,6 +3,8 @@ import random
 import data
 from lingoWords import words
 from functions import printKaart, markBingo, checkWin
+from data import reset_data
+
 
 def start_spel():
     print("\n🎉 Welkom bij het spel Lingo!")
@@ -114,6 +116,7 @@ def start_spel():
 
 # 🔁 Hoofdloop van het spel
 while True:
+    reset_data()
     start_spel()
     opnieuw = input("\n🔁 Wil je opnieuw spelen? (ja/nee): ").lower()
     if opnieuw != "ja":
