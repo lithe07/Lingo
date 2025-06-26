@@ -1,5 +1,6 @@
 # Functions
 
+# kleuren importeren 
 from colorama import Fore
 
 def checkBingo(kaart):
