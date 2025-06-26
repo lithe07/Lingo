@@ -1,3 +1,6 @@
+# Program.py
+
+#Import
 from colorama import Fore, Style
 import random
 import data
@@ -7,7 +10,8 @@ from data import reset_data
 
 
 def start_spel():
-    print("\n🎉 Welkom bij het spel Lingo!")
+    #Welkom bericht
+    print("\nWelkom bij het Lingo spel!")
 
     for i in range(2):
         print(f"\n# Voer de namen in voor {data.teams[i]}")
@@ -15,9 +19,9 @@ def start_spel():
             while True:
                 naam = input(f"Naam van speler {a + 1}: ")
                 if not naam:
-                    print("❗️ Naam mag niet leeg zijn.")
+                    print("Naam mag niet leeg zijn.")
                 elif not naam.isalpha():
-                    print("❗️ Gebruik alleen letters")
+                    print("Gebruik alleen letters")
                 else:
                     break
             if i == 0:
@@ -25,14 +29,14 @@ def start_spel():
             else:
                 data.team2.append(naam)
 
-    print("\n👋 Welkom teams!")
+    print("\nWelkom teams!")
     print(f"Team 1: {data.team1[0]} en {data.team1[1]}")
     print(f"Team 2: {data.team2[0]} en {data.team2[1]}")
 
     while True:
-        print(f"\n🎯 {data.teams[data.beurt]} is aan de beurt!")
+        print(f"\n{data.teams[data.beurt]} is aan de beurt!")
 
-        woord = "lijst"
+        woord = random.choice(words)
         goede_letters = [woord[0]] + ["_"] * (len(woord) - 1)
 
         print(f"Nieuw woord! Hint: {woord[0]} {'_ ' * (len(woord) - 1)}")
@@ -44,7 +48,7 @@ def start_spel():
             gok = input(f"Poging {poging + 1} ({data.teams[data.beurt]}): ").lower()
 
             if len(gok) != len(woord):
-                print("❗ Ongeldig woord, probeer opnieuw.")
+                print("Ongeldig woord, probeer opnieuw.")
                 continue
 
             poging += 1
@@ -63,7 +67,7 @@ def start_spel():
             print("Huidige hint:", " ".join(goede_letters))
 
             if gok == woord:
-                print(Fore.GREEN + f"🎉 Goed gedaan {data.teams[data.beurt]}!" + Style.RESET_ALL)
+                print(Fore.GREEN + f"Goed gedaan {data.teams[data.beurt]}!" + Style.RESET_ALL)
                 data.teamData[data.beurt]["goedGeraden"] += 1
                 data.teamData[data.beurt]["foutOpRij"] = 0
 
@@ -78,7 +82,7 @@ def start_spel():
                     bal = random.choice(ballen)
                     ballen.remove(bal)
 
-                    print("🎱 De Getrokken bal is:", bal)
+                    print("De Getrokken bal is:", bal)
 
                     if type(bal) == str:
                         if "🟢" in bal:
@@ -92,7 +96,7 @@ def start_spel():
                         nummer_getrokken = True
 
                 if nummer_getrokken:
-                    print(f"\n📋 Bingo-kaart van {data.teams[data.beurt]} na ballen:")
+                    print(f"\nBingo-kaart van {data.teams[data.beurt]} na ballen:")
                     printKaart(data.bingo_kaarten[data.beurt])
 
                 win_bericht = checkWin(data.beurt, data.teams, data.teamData, data.bingo_kaarten)
@@ -105,8 +109,8 @@ def start_spel():
 
         if not goed_geraden:
             data.teamData[data.beurt]["foutOpRij"] += 1
-            print(f"🚫 {data.teams[data.beurt]} heeft het woord niet geraden.")
-            print(f"❗ Fouten op rij: {data.teamData[data.beurt]['foutOpRij']}")
+            print(f"{data.teams[data.beurt]} heeft het woord niet geraden.")
+            print(f"Fouten op rij: {data.teamData[data.beurt]['foutOpRij']}")
             verlies_bericht = checkWin(data.beurt, data.teams, data.teamData, data.bingo_kaarten)
             if verlies_bericht:
                 print(verlies_bericht)
@@ -114,11 +118,11 @@ def start_spel():
 
         data.beurt = 1 - data.beurt
 
-# 🔁 Hoofdloop van het spel
+# Hoofdloop van het spel
 while True:
     reset_data()
     start_spel()
-    opnieuw = input("\n🔁 Wil je opnieuw spelen? (ja/nee): ").lower()
+    opnieuw = input("\nWil je opnieuw spelen? (ja/nee): ").lower()
     if opnieuw != "ja":
         print("Bedankt voor het spelen van Lingo!")
         break

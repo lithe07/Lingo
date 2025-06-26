@@ -22,7 +22,7 @@ def checkBingo(kaart):
 
     return False
     
-
+# Markeert X op het bingo kaart
 def markBingo(teamIndex, balNummer, Kaarten):
     kaart = Kaarten[teamIndex]
     for rij in range(4):
@@ -30,6 +30,7 @@ def markBingo(teamIndex, balNummer, Kaarten):
             if kaart[rij][kolom] == balNummer:
                 kaart[rij][kolom] = "X"
 
+# Print de update versie van het bingo kaar
 def printKaart(kaart):
     for rij in kaart:
         print(" ".join(str(v).rjust(2) for v in rij))
@@ -37,7 +38,7 @@ def printKaart(kaart):
 
 
 
-
+# Checken wie verliest of wint
 def checkWin(beurt, teams, team_data, bingo_kaarten):
     if team_data[beurt]["groen"] >= 3:
         return(Fore.GREEN + f"🏆 {teams[beurt]} wint met 3 groene ballen!" + Style.RESET_ALL)
