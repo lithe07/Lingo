@@ -41,18 +41,18 @@ def printKaart(kaart):
 # Checken wie verliest of wint
 def checkWin(beurt, teams, team_data, bingo_kaarten):
     if team_data[beurt]["groen"] >= 3:
-        return(Fore.GREEN + f"🏆 {teams[beurt]} wint met 3 groene ballen!" + Style.RESET_ALL)
+        return(Fore.GREEN + f"{teams[beurt]} wint met 3 groene ballen!" + Style.RESET_ALL)
         
     elif team_data[beurt]["rood"] >= 3:
-        return(Fore.RED + f"💥 {teams[beurt]} verliest met 3 rode ballen!" + Style.RESET_ALL)
+        return(Fore.RED + f"{teams[beurt]} verliest met 3 rode ballen!" + Style.RESET_ALL)
         
     elif team_data[beurt]["goedGeraden"] >= 10:
-        return(Fore.GREEN + f"🏆 {teams[beurt]} wint met 10 goed geraden woorden!" + Style.RESET_ALL)
+        return(Fore.GREEN + f"{teams[beurt]} wint met 10 goed geraden woorden!" + Style.RESET_ALL)
         
     elif team_data[beurt]["foutOpRij"] >= 3:
-        return(Fore.RED + f"💥 {teams[beurt]} verliest met 3 fout geraden woorden op rij!" + Style.RESET_ALL)
+        return(Fore.RED + f"{teams[beurt]} verliest met 3 fout geraden woorden op rij!" + Style.RESET_ALL)
         
     elif checkBingo(bingo_kaarten[beurt]):
-        return(Fore.GREEN + f"🏆 {teams[beurt]} wint met een bingo-lijn!" + Style.RESET_ALL)
+        return(Fore.GREEN + f"{teams[beurt]} wint met een bingo-lijn!" + Style.RESET_ALL)
         
     return False
